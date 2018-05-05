@@ -2,15 +2,17 @@
 
 class BlockDate(object):
 
+
+# block_start_dates_map["block_1"]["end_date"]
     block_start_dates_map = {
-            1:Date(2017, 8, 27),
-            2:Date(2017, 9, 25),
-            3:Date(2017, 10, 23),
-            4:Date(2017, 11, 27),
-            5:Date(2018, 1, 22),
-            6:Date(2018, 2, 19),
-            7:Date(2018, 3, 26),
-            8:Date(2018, 4, 23)
+            "block_1": {"start_date": Date(2017, 8, 27), "end_date": Date(2017, 9, 20}
+            "block_2": {"start_date": Date(2017, 9, 25), "end_date": Date(2017, 10, 18}
+            "block_3": {"start_date": Date(2017, 10, 23), "end_date": Date(2017, 11, 15}
+            "block_4": {"start_date": Date(2017, 11, 27), "end_date": Date(2017, 12, 20}
+            "block_5": {"start_date": Date(2018, 1, 22), "end_date": Date(2017, 2, 14}
+            "block_6": {"start_date": Date(2018, 2, 19), "end_date": Date(2017, 3, 14}
+            "block_7": {"start_date": Date(2018, 3, 26), "end_date": Date(2017, 4, 18}
+            "block_8": {"start_date": Date(2018, 4, 23), "end_date": Date(2017, 5, 16}
     }
 
     # B W D
@@ -44,12 +46,14 @@ class BlockDate(object):
 
     def get_range(block, week):
         if block and week:
+>>>>>>> 6e174a6f4c857e2125a4513628d3da59a9ec758e
             return( block_start_dates_map[block] + datetime.timedelta(7 * (week - 1)), block_start_dates_map[block] + datetime.timedelta(7 * (week - 1) + 6 ) )
 
-        elif block:
+        elif self.block:
             return( block_start_dates_map[block], block_start_dates_map[block] + datetime.timedelta(22) )
 
-        elif week:
+        elif self.week:
+            return( )
 
 
         block_date = block_date.lower()

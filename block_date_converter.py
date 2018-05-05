@@ -40,6 +40,16 @@ def meow(text):
     return block_date_to_real_time_date( silly(B), silly(W), silly(D) )
 
 
+def get_current_block():
+        today = datetime.date.today()
+        end_dates = [ block_start_dates_map[b]['end'] for b in range(1,9) ]
+
+        block_counter = 0
+        for date in end_dates:
+            if today > date:
+              block_counter += 1
+
+        return block_counter
 
 
 def block_date_to_real_time_date(B, W, D):

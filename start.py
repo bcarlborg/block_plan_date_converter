@@ -3,9 +3,16 @@ import re
 
 p1 = r'(first|second|third|fourth|fifth|sixth|seventh|eighth) block'
 p2 = r'block ([1-8]|one|two|three|four|five|six|seven|eight)'
+# wp = r'week ([1-4]|one|two|three|four)'
+# dp = r'day ([1-7]|one|two|three|four|five|six|seven)'
+
+
 
 
 def parse_date(text):
+    # new date d
+
+    #CHECK IF block is present
 
     if re.match(p1, text, re.I):
         return block_date_to_real_date( re.match(p1, text, re.I).group() )
@@ -15,9 +22,8 @@ def parse_date(text):
 
     return False
 
-def block_date_to_real_date(block_date):
+'''Takes a string such as 'Block 1 and returns a date range'''
 
-    return block_date
 
 
 

@@ -2,7 +2,7 @@
 
 class BlockDate(object):
 
-    dict = {
+    block_start_dates_map = {
             1:Date(2017, 8, 27),
             2:Date(2017, 9, 25),
             3:Date(2017, 10, 23),
@@ -27,8 +27,10 @@ class BlockDate(object):
 
     def get_range(self):
         if block and week:
+            return( block_start_dates_map[block] + datetime.timedelta(7 * (week - 1)), block_start_dates_map[block] + datetime.timedelta(7 * (week - 1) + 6 ) )
 
         elif block:
+            return( block_start_dates_map[block], block_start_dates_map[block] + datetime.timedelta(22) )
 
         elif week:
 

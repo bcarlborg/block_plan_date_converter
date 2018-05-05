@@ -1,5 +1,7 @@
 import datetime
 import re
+import sys
+import os
 
 block_pattern1 = r'(first|second|third|fourth|fifth|sixth|seventh|eigth|1st|2st|3rd|4th|5th|6th|7th|8th) block'
 block_pattern2 = r'block ([1-8]|one|two|three|four|five|six|seven|eigth)'
@@ -89,9 +91,18 @@ def get_date(B, W, D):
     return ( block_start_dates_map[B]['start'] + datetime.timedelta(7 * (W - 1) + D) )
 
 
-def main():
-    text = "block 1"
-    print(meow(text))
 
 if __name__ == '__main__':
-    main()
+    file = open("converted_date.txt", 'w')
+
+    s = sys.argv[1]
+    if s == "test":
+        file.write("the test works")
+        file.close()
+    else:
+        out = str(meow(s))
+        print(out)
+        file.write(out)
+        file.close()
+
+    os.system("open converted_date.txt")

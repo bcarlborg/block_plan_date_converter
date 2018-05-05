@@ -15,23 +15,45 @@ class BlockDate(object):
             "block_8": {"start_date": Date(2018, 4, 23), "end_date": Date(2017, 5, 16}
     }
 
+    # B W D
+    # B W
+    # B
+    # W D
+    # W
+    def __init__(self, B = None, W = None, D = None):
 
-    def __init__(self, block=None, week=None, day=None):
-        if day:
-            self.get_date()
+        if B and W and D:
+            self.get_date(block=B, week=W, day=D)
+        elif B and W:
+            self.get_range(block=B, week=W)
+        elif W and D:
+            self.get_date(block=get_current_block(), week=W, day=D)
+        elif B and D:
+            pass
+        elif B:
+            self.get_range(block=B)
+        elif W:
+            self.get_range(block=get_current_block(), week=W)
+        elif D:
+            pass
         else:
-            self.get_range()
+            pass
 
 
         self.block = block
         self.week = week
         self.day = day
 
+<<<<<<< HEAD
     def get_current_block(self):
         today = date.now
 
     def get_range(self):
         if self.block and self.week:
+=======
+    def get_range(block=None, week=None):
+        if block and week:
+>>>>>>> 6e174a6f4c857e2125a4513628d3da59a9ec758e
             return( block_start_dates_map[block] + datetime.timedelta(7 * (week - 1)), block_start_dates_map[block] + datetime.timedelta(7 * (week - 1) + 6 ) )
 
         elif self.block:
@@ -49,4 +71,4 @@ class BlockDate(object):
         return block_date
 
 
-    def get_date(self):
+    def get_date(block=None, week=None, day=None):

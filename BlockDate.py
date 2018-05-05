@@ -42,7 +42,7 @@ class BlockDate(object):
         self.week = week
         self.day = day
 
-    def get_range(block=None, week=None):
+    def get_range(block, week):
         if block and week:
             return( block_start_dates_map[block] + datetime.timedelta(7 * (week - 1)), block_start_dates_map[block] + datetime.timedelta(7 * (week - 1) + 6 ) )
 
@@ -60,4 +60,4 @@ class BlockDate(object):
         return block_date
 
 
-    def get_date(block=None, week=None, day=None):
+    def get_date(block, week, day):
